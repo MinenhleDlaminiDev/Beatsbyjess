@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from "lucide-react";
 import React from "react";
 import { Button } from "../../../../components/ui/button";
+import HeroBanner from "../../../../assets/Hero.jpg"
 
 const navigationItems = [
   "Home",
@@ -40,7 +41,7 @@ export const HeroBannerSection = (): JSX.Element => {
         <img
           className="absolute w-full h-full top-0 left-0 object-cover"
           alt="Makeup brushes background"
-          src="/src/assets/Hero.jpg"
+          src={HeroBanner}
         />
 
         <div className="absolute w-full h-full top-0 left-0 bg-[#1a0f0f82]" />
