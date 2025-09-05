@@ -1,19 +1,32 @@
 import React from "react";
+import Gallery1 from "../../../../assets/Gallery1.jpeg"
+import Gallery2 from "../../../../assets/Gallery2.jpeg"
+import Gallery3 from "../../../../assets/Gallery3.jpeg"
+import Gallery4 from "../../../../assets/Gallery4.jpeg"
+import Gallery5 from "../../../../assets/Gallery5.jpeg"
+import Gallery6 from "../../../../assets/Gallery6.jpeg"
+import Gallery7 from "../../../../assets/Gallery7.jpeg"
+import Gallery8 from "../../../../assets/Gallery8.jpg"
+import Gallery9 from "../../../../assets/Gallery9.jpg"
+import Gallery10 from "../../../../assets/Gallery10.jpg"
+import Gallery11 from "../../../../assets/Gallery11.jpg"
+import Gallery12 from "../../../../assets/Gallery12.jpg"
+
 
 export const PortfolioGallerySection = (): JSX.Element => {
   const galleryImages = [
-    "/src/assets/Gallery1.jpeg",
-    "/src/assets/Gallery2.jpeg", 
-    "/src/assets/Gallery3.jpeg",
-    "/src/assets/Gallery4.jpeg",
-    "/src/assets/Gallery5.jpeg",
-    "/src/assets/Gallery6.jpeg",
-    "/src/assets/Gallery7.jpeg",
-    "/src/assets/Gallery8.jpg",
-    "/src/assets/Gallery9.jpg",
-    "/src/assets/Gallery10.jpg",
-    "/src/assets/Gallery11.jpg",
-    "/src/assets/Gallery12.jpg"
+    Gallery1,
+    Gallery2, 
+    Gallery3,
+    Gallery4,
+    Gallery5,
+    Gallery6,
+    Gallery7,
+    Gallery8,
+    Gallery9,
+    Gallery10,
+    Gallery11,
+    Gallery12
   ];
 
   return (
@@ -33,11 +46,6 @@ export const PortfolioGallerySection = (): JSX.Element => {
               </div>
             </div>
 
-            <img
-              className="w-[60px] md:w-[75px] lg:w-[85px] h-px object-cover mx-auto"
-              alt="Line"
-              src="/line-4.svg"
-            />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
@@ -51,22 +59,6 @@ export const PortfolioGallerySection = (): JSX.Element => {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full hidden md:block">
-          <img
-            className="w-px h-[70px] object-cover"
-            alt="Line"
-            src="/line-5-1.svg"
-          />
-        </div>
-
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full hidden md:block">
-          <img
-            className="w-px h-[70px] object-cover"
-            alt="Line"
-            src="/line-5-1.svg"
-          />
         </div>
       </div>
     </section>

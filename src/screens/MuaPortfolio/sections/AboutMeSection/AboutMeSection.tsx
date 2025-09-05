@@ -1,4 +1,5 @@
 import React from "react";
+import AboutMe from "../../../../assets/AboutMe.jpeg"
 
 export const AboutMeSection = (): JSX.Element => {
   return (
@@ -9,7 +10,7 @@ export const AboutMeSection = (): JSX.Element => {
             <img
               className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover"
               alt="Jess Ravuku Portrait"
-              src="/src/assets/AboutMe.jpeg"
+              src={AboutMe}
             />
           </div>
 

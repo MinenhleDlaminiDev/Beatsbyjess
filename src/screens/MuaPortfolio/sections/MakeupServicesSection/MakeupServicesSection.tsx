@@ -1,14 +1,17 @@
 import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
+import  EyeMakeUp  from "../../../../assets/EyeMakeUp.jpeg"
+import  FaceMakeUp  from "../../../../assets/FaceMakeUp.jpeg"
+
 
 export const MakeupServicesSection = (): JSX.Element => {
   const serviceCards = [
     {
-      image: "/src/assets/EyeMakeUp.jpeg",
+      image: EyeMakeUp,
       title: "Eye Makeup",
     },
     {
-      image: "/src/assets/Face MakeUp.jpeg",
+      image: FaceMakeUp,
       title: "Face MakeUp",
     },
   ];
