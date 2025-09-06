@@ -115,7 +115,7 @@ export const FooterSection = (): JSX.Element => {
         <div className="text-center [font-family:'Didact_Gothic',Helvetica] font-normal text-sm md:text-[15px] tracking-[0] leading-[22px] md:leading-[26px]">
           <span className="text-white">© </span>
           <span className="text-[#bbbbbb] text-xs">
-            2024. Developed by Minenhle Barry Dlamini
+            2025. Developed by Minenhle Barry Dlamini
           </span>
         </div>
       </div>

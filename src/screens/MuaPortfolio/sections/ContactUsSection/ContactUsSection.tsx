@@ -132,12 +132,6 @@ export const ContactUsSection = (): JSX.Element => {
           </div>
         </div>
       </div>
-
-      <img
-        className="absolute w-px h-[70px] bottom-[35px] left-1/2 transform -translate-x-1/2 object-cover hidden md:block"
-        alt="Line"
-        src="/line-5-1.svg"
-      />
     </section>
   );
 };
