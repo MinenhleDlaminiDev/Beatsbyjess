@@ -4,6 +4,7 @@ type InViewProps = {
   className?: string;
   delayMs?: number;
   distancePx?: number;
+  once?: boolean;
 };
 
 const ease = "cubic-bezier(0.25,0.46,0.45,0.94)";
@@ -13,6 +14,7 @@ export const InView: React.FC<PropsWithChildren<InViewProps>> = ({
   className,
   delayMs = 0,
   distancePx = 14,
+  once = true,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -30,11 +32,13 @@ export const InView: React.FC<PropsWithChildren<InViewProps>> = ({
         if (entry.isIntersecting) {
           if (delayMs) {
             const id = setTimeout(() => setVisible(true), delayMs);
-            observer.unobserve(entry.target);
+            if (once) observer.unobserve(entry.target);
             return () => clearTimeout(id);
           }
           setVisible(true);
-          observer.unobserve(entry.target);
+          if (once) observer.unobserve(entry.target);
+        } else if (!once) {
+          setVisible(false);
         }
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });

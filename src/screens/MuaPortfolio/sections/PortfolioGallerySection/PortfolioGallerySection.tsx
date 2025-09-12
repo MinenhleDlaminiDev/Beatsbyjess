@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import Gallery1 from "../../../../assets/Gallery1.jpeg"
 import Gallery2 from "../../../../assets/Gallery2.jpeg"
 import Gallery3 from "../../../../assets/Gallery3.jpeg"
@@ -11,10 +11,12 @@ import Gallery9 from "../../../../assets/Gallery9.jpg"
 import Gallery10 from "../../../../assets/Gallery10.jpg"
 import Gallery11 from "../../../../assets/Gallery11.jpg"
 import Gallery12 from "../../../../assets/Gallery12.jpg"
- 
-
+import InView from "../../../../components/InView";
+import Lightbox from "../../../../components/Lightbox";
 
 export const PortfolioGallerySection = (): JSX.Element => {
+  const [active, setActive] = useState<string | null>(null);
+  const [filter, setFilter] = useState<string>("All");
   const galleryImages = [
     Gallery1,
     Gallery2, 
@@ -29,6 +31,16 @@ export const PortfolioGallerySection = (): JSX.Element => {
     Gallery11,
     Gallery12
   ];
+
+  const categories = useMemo(() => (["All", "Bridal", "Editorial", "Casual"]), []);
+  const filtered = useMemo(() => {
+    if (filter === "All") return galleryImages;
+    return galleryImages.filter((_, i) =>
+      (filter === "Bridal" && i % 3 === 0) ||
+      (filter === "Editorial" && i % 3 === 1) ||
+      (filter === "Casual" && i % 3 === 2)
+    );
+  }, [galleryImages, filter]);
 
   return (
     <section className="relative w-full bg-[#fff5f5] py-12 md:py-16">
@@ -49,20 +61,55 @@ export const PortfolioGallerySection = (): JSX.Element => {
 
           </div>
 
+          <div className="flex items-center justify-center gap-2 md:gap-3 mb-8">
+            {categories.map((c) => (
+              <button
+                key={c}
+                onClick={() => setFilter(c)}
+                className={`px-3 py-1 rounded-full border transition-all duration-300 ${filter === c ? 'bg-[#ff9999] text-white border-[#ff9999]' : 'border-[#1a0f0f] text-[#1a0f0f] hover:bg-[#ffe1da]'}`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {galleryImages.map((image, index) => (
-              <div key={index} className="aspect-square overflow-hidden rounded-lg">
-                <img
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  alt={`Gallery image ${index + 1}`}
-                  src={image}
-                />
-              </div>
+            {filtered.map((image, index) => (
+              <InView key={image} delayMs={index * 80}>
+                <button
+                  className="relative aspect-square overflow-hidden rounded-lg group w-full"
+                  onClick={() => setActive(image)}
+                >
+                  <img
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt={`Gallery image`}
+                    src={image}
+                  />
+                  <div className="absolute inset-0 bg-[rgba(255,160,122,0)] group-hover:bg-[rgba(255,160,122,0.18)] transition-colors duration-300" />
+                </button>
+              </InView>
             ))}
           </div>
         </div>
       </div>
-      
+      <Lightbox
+        src={active}
+        onClose={() => setActive(null)}
+        onPrev={() => {
+          if (!active) return;
+          const currentIndex = filtered.indexOf(active);
+          const prevIndex = (currentIndex - 1 + filtered.length) % filtered.length;
+          setActive(filtered[prevIndex]);
+        }}
+        onNext={() => {
+          if (!active) return;
+          const currentIndex = filtered.indexOf(active);
+          const nextIndex = (currentIndex + 1) % filtered.length;
+          setActive(filtered[nextIndex]);
+        }}
+        hasPrev={filtered.length > 1}
+        hasNext={filtered.length > 1}
+      />
     </section>
   );
 };
