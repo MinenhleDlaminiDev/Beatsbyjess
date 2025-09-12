@@ -150,6 +150,7 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+
   }
 
   .dark {
@@ -196,3 +197,5 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+ 

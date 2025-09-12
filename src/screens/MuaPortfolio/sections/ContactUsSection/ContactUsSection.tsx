@@ -3,34 +3,15 @@ import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { Textarea } from "../../../../components/ui/textarea";
+import { PhoneCall, Mail, MapPin, Clock, MapPinned } from "lucide-react";
 
 export const ContactUsSection = (): JSX.Element => {
   const contactInfo = [
-    {
-      icon: "/headset.svg",
-      text: "+254712345678",
-      iconClass: "w-6 h-6",
-    },
-    {
-      icon: "/vector-4.svg",
-      text: "example@gmail.com",
-      iconClass: "w-[25px] h-[25px]",
-    },
-    {
-      icon: "/vector.svg",
-      text: "Johannesburg, South Africa",
-      iconClass: "w-[19px] h-[25px]",
-    },
-    {
-      icon: "/vector-2.svg",
-      text: "Mon-Fri: 08.00 - 19.00, Sunday: Closed",
-      iconClass: "w-6 h-6",
-    },
-    {
-      icon: "/vector-1.svg",
-      text: "Google Maps",
-      iconClass: "w-[25px] h-[22px]",
-    },
+    { icon: <PhoneCall className="w-6 h-6 text-[#ff9999]" />, text: "+254712345678" },
+    { icon: <Mail className="w-6 h-6 text-[#ff9999]" />, text: "example@gmail.com" },
+    { icon: <MapPin className="w-5 h-6 text-[#ff9999]" />, text: "Johannesburg, South Africa" },
+    { icon: <Clock className="w-6 h-6 text-[#ff9999]" />, text: "Mon-Fri: 08.00 - 19.00, Sunday: Closed" },
+    { icon: <MapPinned className="w-6 h-6 text-[#ff9999]" />, text: "Google Maps" },
   ];
 
   return (
@@ -68,11 +49,7 @@ export const ContactUsSection = (): JSX.Element => {
               <div className="space-y-4 md:space-y-6">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
-                    <img
-                      className={item.iconClass}
-                      alt="Contact icon"
-                      src={item.icon}
-                    />
+                    {item.icon}
                     <span className="[font-family:'Didact_Gothic',Helvetica] font-normal text-black text-sm md:text-base lg:text-[17px] tracking-[0] leading-[22px] md:leading-[26px]">
                       {item.text}
                     </span>

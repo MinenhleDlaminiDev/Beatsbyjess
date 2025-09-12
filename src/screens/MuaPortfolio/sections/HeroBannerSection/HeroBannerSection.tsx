@@ -34,6 +34,20 @@ export const HeroBannerSection = (): JSX.Element => {
           .synchronized-bounce {
             animation: synchronizedBounce 4s infinite;
           }
+
+          @keyframes scaleFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+          }
+          @keyframes slideUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes salmonGlowPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,160,122,0.0), 0 0 0 rgba(0,0,0,0); }
+            50% { box-shadow: 0 8px 24px rgba(255,160,122,0.45), 0 2px 8px rgba(255,160,122,0.35); }
+            100% { box-shadow: 0 0 0 0 rgba(255,160,122,0.0), 0 0 0 rgba(0,0,0,0); }
+          }
         `}
       </style>
       <section className="relative w-full h-screen lg:h-[90vh] shadow-[0px_40px_87px_#0000001a,0px_159px_159px_#00000017,0px_357px_214px_#0000000d,0px_634px_254px_#00000003,0px_991px_277px_transparent]">
@@ -48,7 +62,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
         <header className="flex items-center justify-between px-4 md:px-8 lg:px-[118px] pt-4 md:pt-[19px]">
           <div className="flex items-center">
-            <div className="relative">
+            <div className="relative transition-transform ease-smooth duration-200 hover:scale-105">
               <div className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#fff5f5] text-2xl md:text-3xl lg:text-[45px] tracking-[9.00px] leading-[normal] synchronized-bounce">
                 B
               </div>
@@ -86,18 +100,29 @@ export const HeroBannerSection = (): JSX.Element => {
           />
 
           <div className="mb-4 md:mb-6">
-            <div className="[font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-xs md:text-sm lg:text-[15px] tracking-[6.60px] leading-[22px]">
+            <div
+              className="opacity-0 [font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-xs md:text-sm lg:text-[15px] tracking-[6.60px] leading-[22px]"
+              style={{ animation: 'slideUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) forwards', animationDelay: '300ms' }}
+            >
               MAKEUP ARTIST
             </div>
           </div>
 
           <div className="mb-8 md:mb-12 lg:mb-[53px]">
-            <h1 className="[font-family:'Oswald',Helvetica] font-normal text-[#fff5f5] text-3xl md:text-5xl lg:text-[70px] tracking-[12.60px] leading-[26px]">
+            <h1
+              className="opacity-0 [font-family:'Oswald',Helvetica] font-normal text-[#fff5f5] text-3xl md:text-5xl lg:text-[70px] tracking-[12.60px] leading-[26px]"
+              style={{ animation: 'scaleFadeIn 1.2s cubic-bezier(0.25,0.46,0.45,0.94) forwards' }}
+            >
               JESS RAVUKU
             </h1>
           </div>
 
-          <Button className="h-auto bg-[#ff9999] hover:bg-[#ff8080] px-6 md:px-8 py-2 md:py-3">
+          <Button
+            className="h-auto bg-[#ff9999] hover:bg-[#ff8080] px-6 md:px-8 py-2 md:py-3 transition-[box-shadow,transform] duration-300"
+            style={{}}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.animation = 'salmonGlowPulse 1.2s ease-in-out infinite'; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.animation = ''; }}
+          >
             <span className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#fff5f5] text-sm md:text-[15px] tracking-[0] leading-[22px]">
               About Me
             </span>
@@ -107,6 +132,8 @@ export const HeroBannerSection = (): JSX.Element => {
         <div className="absolute bottom-8 md:bottom-12 lg:bottom-[64px] left-1/2 transform -translate-x-1/2">
           <ChevronDownIcon className="w-8 h-8 md:w-10 md:h-10 text-white synchronized-bounce" />
         </div>
+
+        
       </div>
     </section>
     </>

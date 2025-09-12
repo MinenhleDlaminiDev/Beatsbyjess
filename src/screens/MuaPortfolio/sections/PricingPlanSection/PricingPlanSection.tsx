@@ -1,5 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
+import InView from "../../../../components/InView";
+import CountUp from "../../../../components/CountUp";
 
 export const PricingPlanSection = (): JSX.Element => {
   const pricingItems = [
@@ -34,6 +36,7 @@ export const PricingPlanSection = (): JSX.Element => {
           </div>
 
           <div className="flex justify-center">
+            <InView className="w-full max-w-[827px]">
             <Card className="w-full max-w-[827px] h-[400px] md:h-[350px] lg:h-[400px] border-dashed border-black overflow-hidden">
               <CardContent className="p-0 relative w-full h-full bg-[url(/src/assets/GeneralPriceBackground.jpg)] bg-cover bg-[50%_50%]">
                 <div className="absolute inset-0 bg-[#1a0f0f99]" />
@@ -61,7 +64,8 @@ export const PricingPlanSection = (): JSX.Element => {
                         </div>
 
                         <div className="[font-family:'Didact_Gothic',Helvetica] font-normal text-white text-sm md:text-[15px] tracking-[0] leading-[22px] text-right">
-                          {item.price}
+                          <span className="mr-1">{item.price.replace(/\d+/g, "")}</span>
+                          <CountUp to={parseInt(item.price.replace(/\D/g, ""), 10)} durationMs={1200} />
                         </div>
                       </div>
                     ))}
@@ -69,6 +73,7 @@ export const PricingPlanSection = (): JSX.Element => {
                 </div>
               </CardContent>
             </Card>
+            </InView>
           </div>
         </div>
       </div>

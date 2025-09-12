@@ -11,6 +11,7 @@ import Gallery9 from "../../../../assets/Gallery9.jpg"
 import Gallery10 from "../../../../assets/Gallery10.jpg"
 import Gallery11 from "../../../../assets/Gallery11.jpg"
 import Gallery12 from "../../../../assets/Gallery12.jpg"
+ 
 
 
 export const PortfolioGallerySection = (): JSX.Element => {
@@ -61,6 +62,7 @@ export const PortfolioGallerySection = (): JSX.Element => {
           </div>
         </div>
       </div>
+      
     </section>
   );
 };

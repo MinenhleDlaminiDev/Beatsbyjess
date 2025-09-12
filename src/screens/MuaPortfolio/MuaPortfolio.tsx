@@ -6,6 +6,7 @@ import { HeroBannerSection } from "./sections/HeroBannerSection/HeroBannerSectio
 import { MakeupServicesSection } from "./sections/MakeupServicesSection/MakeupServicesSection";
 import { PortfolioGallerySection } from "./sections/PortfolioGallerySection/PortfolioGallerySection";
 import { PricingPlanSection } from "./sections/PricingPlanSection/PricingPlanSection";
+ 
 
 export const MuaPortfolio = (): JSX.Element => {
   return (

@@ -1,17 +1,21 @@
 import React from "react";
 import AboutMe from "../../../../assets/AboutMe.jpeg"
+import InView from "../../../../components/InView";
 
 export const AboutMeSection = (): JSX.Element => {
   return (
     <section className="w-full bg-[#fff4f5] py-12 md:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start">
+        <InView className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start" distancePx={28}>
           <div className="w-full order-1 lg:order-1">
-            <img
-              className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover"
-              alt="Jess Ravuku Portrait"
-              src={AboutMe}
-            />
+            <div className="relative overflow-hidden">
+              <img
+                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover transition-transform duration-500"
+                alt="Jess Ravuku Portrait"
+                src={AboutMe}
+              />
+              <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-500" />
+            </div>
           </div>
 
           <div className="w-full space-y-4 md:space-y-6 order-2 lg:order-2 text-center lg:text-left">
@@ -63,7 +67,7 @@ export const AboutMeSection = (): JSX.Element => {
               </p>
             </div>
           </div>
-        </div>
+        </InView>
       </div>
     </section>
   );

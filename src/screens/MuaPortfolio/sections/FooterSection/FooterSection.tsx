@@ -1,23 +1,12 @@
 import React from "react";
 import { Separator } from "../../../../components/ui/separator";
+import { PhoneCall, Mail, MapPin, Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 
 export const FooterSection = (): JSX.Element => {
   const contactInfo = [
-    {
-      icon: "/headset.svg",
-      text: "+254712345678",
-      alt: "Headset",
-    },
-    {
-      icon: "/vector-4.svg",
-      text: "example@gmail.com",
-      alt: "Vector",
-    },
-    {
-      icon: "/vector.svg",
-      text: "Johannesburg, South Africa",
-      alt: "Vector",
-    },
+    { icon: <PhoneCall className="w-6 h-6 text-[#ff9999]" />, text: "+254712345678" },
+    { icon: <Mail className="w-6 h-6 text-[#ff9999]" />, text: "example@gmail.com" },
+    { icon: <MapPin className="w-5 h-6 text-[#ff9999]" />, text: "Johannesburg, South Africa" },
   ];
 
   const openingHours = [
@@ -52,12 +41,19 @@ export const FooterSection = (): JSX.Element => {
               Let&apos;s Glam Together!
             </div>
 
-            <div className="flex justify-center lg:justify-start">
-              <img
-                className="w-[104px] h-6"
-                alt="Social media icons"
-                src="/social-media-icons.png"
-              />
+            <div className="flex justify-center lg:justify-start gap-4">
+              <a href="#" aria-label="Instagram" className="text-[#ff9999] hover:opacity-80 transition-opacity">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" aria-label="Facebook" className="text-[#ff9999] hover:opacity-80 transition-opacity">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" aria-label="Twitter" className="text-[#ff9999] hover:opacity-80 transition-opacity">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" aria-label="YouTube" className="text-[#ff9999] hover:opacity-80 transition-opacity">
+                <Youtube className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -72,11 +68,7 @@ export const FooterSection = (): JSX.Element => {
             <div className="space-y-4 md:space-y-6">
               {contactInfo.map((contact, index) => (
                 <div key={index} className="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
-                  <img
-                    className={`${index === 0 ? "w-6 h-6" : index === 1 ? "w-[25px] h-[25px]" : "w-[19px] h-[25px]"}`}
-                    alt={contact.alt}
-                    src={contact.icon}
-                  />
+                  {contact.icon}
                   <div className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#fff5f5] text-sm md:text-base lg:text-[17px] tracking-[0] leading-[22px] md:leading-[26px]">
                     {contact.text}
                   </div>

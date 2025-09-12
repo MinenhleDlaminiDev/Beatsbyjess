@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
 import  EyeMakeUp  from "../../../../assets/EyeMakeUp.jpeg"
 import  FaceMakeUp  from "../../../../assets/FaceMakeUp.jpeg"
+import InView from "../../../../components/InView";
 
 
 export const MakeupServicesSection = (): JSX.Element => {
@@ -43,17 +44,17 @@ export const MakeupServicesSection = (): JSX.Element => {
         {/* Services Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12">
           {serviceCards.map((card, index) => (
-            <div key={index} className="relative group w-full">
+            <InView key={index} className="relative group w-full" delayMs={index * 100}>
               <Card className="relative border-0 bg-transparent shadow-none overflow-hidden w-full">
                 <CardContent className="p-0">
-                  <div className="relative">
+                  <div className="relative transition-transform duration-300 ease-linear group-hover:-translate-y-1">
                     <img
                       className="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover"
                       alt={card.title}
                       src={card.image}
                     />
                     
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#ff9999] p-2 md:p-6">
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#ff9999] p-2 md:p-6 border-t-2 border-transparent group-hover:border-[#FFA07A] transition-colors duration-200">
                       <div className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#1a0f0f] text-sm md:text-xl tracking-[0] leading-[30px] text-center">
                         {card.title}
                       </div>
@@ -61,7 +62,7 @@ export const MakeupServicesSection = (): JSX.Element => {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </InView>
           ))}
         </div>
       </div>
