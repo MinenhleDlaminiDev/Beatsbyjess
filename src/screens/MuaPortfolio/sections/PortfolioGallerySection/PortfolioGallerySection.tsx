@@ -11,6 +11,17 @@ import Gallery9 from "../../../../assets/Gallery9.jpg"
 import Gallery10 from "../../../../assets/Gallery10.jpg"
 import Gallery11 from "../../../../assets/Gallery11.jpg"
 import Gallery12 from "../../../../assets/Gallery12.jpg"
+import Gallery13 from "../../../../assets/Gallery13.jpg"
+import Gallery14 from "../../../../assets/Gallery14.jpg"
+import Gallery15 from "../../../../assets/Gallery15.jpg"
+import Gallery16 from "../../../../assets/Gallery16.jpg"
+import Gallery17 from "../../../../assets/Gallery17.jpg"
+import Gallery18 from "../../../../assets/Gallery18.jpg"
+import Gallery19 from "../../../../assets/Gallery19.jpg"
+import Gallery20 from "../../../../assets/Gallery20.jpg"
+import Gallery21 from "../../../../assets/Gallery21.jpg"
+import Gallery22 from "../../../../assets/Gallery22.jpg"
+import Gallery23 from "../../../../assets/Gallery23.jpg"
 import InView from "../../../../components/InView";
 import Lightbox from "../../../../components/Lightbox";
 
@@ -29,7 +40,18 @@ export const PortfolioGallerySection = (): JSX.Element => {
     Gallery9,
     Gallery10,
     Gallery11,
-    Gallery12
+    Gallery12,
+    Gallery13,
+    Gallery14,
+    Gallery15,
+    Gallery16,
+    Gallery17,
+    Gallery18,
+    Gallery19,
+    Gallery20,
+    Gallery21,
+    Gallery22,
+    Gallery23
   ];
 
   const categories = useMemo(() => (["All", "Bridal", "Editorial", "Casual"]), []);
