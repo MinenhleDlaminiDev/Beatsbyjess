@@ -1,10 +1,10 @@
 import emailjs from "@emailjs/browser";
 import React, { useState } from "react";
+import { PhoneCall, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import { Textarea } from "../../../../components/ui/textarea";
-import { PhoneCall, Mail, MapPin, Clock, MapPinned } from "lucide-react";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -32,11 +32,10 @@ export const ContactUsSection = (): JSX.Element => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const contactInfo = [
-    { icon: <PhoneCall className="w-6 h-6 text-[#ff9999]" />, text: "+254712345678" },
-    { icon: <Mail className="w-6 h-6 text-[#ff9999]" />, text: "example@gmail.com" },
+    { icon: <PhoneCall className="w-6 h-6 text-[#ff9999]" />, text: "+27 81 764 8370" },
+    { icon: <Mail className="w-6 h-6 text-[#ff9999]" />, text: "admin@beatbyjess.co.za" },
     { icon: <MapPin className="w-5 h-6 text-[#ff9999]" />, text: "Johannesburg, South Africa" },
     { icon: <Clock className="w-6 h-6 text-[#ff9999]" />, text: "Mon-Fri: 08.00 - 19.00, Sunday: Closed" },
-    { icon: <MapPinned className="w-6 h-6 text-[#ff9999]" />, text: "Google Maps" },
   ];
 
   const isEmailJsConfigured =
@@ -107,7 +106,7 @@ export const ContactUsSection = (): JSX.Element => {
         status: "success",
         message: "Thanks. Your message has been sent successfully.",
       });
-    } catch (error) {
+    } catch {
       setSubmitState({
         status: "error",
         message:
@@ -140,7 +139,7 @@ export const ContactUsSection = (): JSX.Element => {
             <div className="space-y-3 md:space-y-4">
               <div className="inline-flex items-center justify-center lg:justify-start gap-2.5 px-0 py-2.5">
                 <h2 className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-[22px] whitespace-nowrap">
-                  CONTACT US
+                  BOOK APPOINTMENT
                 </h2>
               </div>
             </div>
