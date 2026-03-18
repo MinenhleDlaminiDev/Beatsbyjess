@@ -5,10 +5,12 @@ import CountUp from "../../../../components/CountUp";
 
 export const PricingPlanSection = (): JSX.Element => {
   const pricingItems = [
-    { service: "Natural", price: "R400" },
-    { service: "Soft Glam", price: "R500" },
-    { service: "Full Facebeat", price: "R600" },
-    { service: "Graduation", price: "R650" },
+    { service: "Natural Look", price: "R450" },
+    { service: "Soft Glam", price: "R550" },
+    { service: "Full Glam", price: "R650" },
+    { service: "Matric/Graduation", price: "R700" },
+    { service: "Bridesmaids", price: "R750" },
+    { service: "Bridal Makeup", price: "R900" },
   ];
 
   return (
@@ -37,12 +39,12 @@ export const PricingPlanSection = (): JSX.Element => {
 
           <div className="flex justify-center">
             <InView className="w-full max-w-[827px]">
-            <Card className="w-full max-w-[827px] h-[400px] md:h-[350px] lg:h-[400px] border-dashed border-black overflow-hidden">
-              <CardContent className="p-0 relative w-full h-full bg-[url(/src/assets/GeneralPriceBackground.jpg)] bg-cover bg-[50%_50%]">
+            <Card className="w-full max-w-[827px] border-dashed border-black overflow-hidden bg-transparent">
+              <CardContent className="p-0 relative w-full bg-[url(/src/assets/GeneralPriceBackground.jpg)] bg-cover bg-[center_36%]">
                 <div className="absolute inset-0 bg-[#1a0f0f99]" />
 
-                <div className="relative z-10 p-6 md:p-8 lg:p-[59px] flex flex-col justify-center h-full">
-                  <h3 className="[font-family:'Oswald',Helvetica] font-normal text-white text-lg md:text-xl lg:text-2xl tracking-[2.00px] leading-[22px] mb-6 md:mb-12 lg:mb-[62px] text-center md:text-left">
+                <div className="relative z-10 p-6 md:p-8 lg:p-[59px]">
+                  <h3 className="[font-family:'Oswald',Helvetica] font-normal text-white text-lg md:text-xl lg:text-2xl tracking-[2.00px] leading-[22px] mb-6 md:mb-10 lg:mb-12 text-center md:text-left">
                     General Prices:
                   </h3>
 
@@ -70,6 +72,10 @@ export const PricingPlanSection = (): JSX.Element => {
                       </div>
                     ))}
                   </div>
+
+                  <p className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#fff5f5] text-sm md:text-[15px] tracking-[0] leading-[22px] mt-8 text-center md:text-left">
+                    House calls are available.
+                  </p>
                 </div>
               </CardContent>
             </Card>
