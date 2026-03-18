@@ -52,20 +52,15 @@ export const PricingPlanSection = (): JSX.Element => {
                     {pricingItems.map((item, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between relative"
+                        className="flex items-end gap-2 sm:gap-3 md:gap-4"
                       >
-                        <div className="[font-family:'Didact_Gothic',Helvetica] font-normal text-white text-sm md:text-[15px] tracking-[0] leading-[22px]">
+                        <div className="max-w-[45%] sm:max-w-none shrink-0 [font-family:'Didact_Gothic',Helvetica] font-normal text-white text-sm md:text-[15px] tracking-[0] leading-[18px] md:leading-[22px] break-words">
                           {item.service}
                         </div>
 
-                        <div className="flex-1 flex items-center justify-center mx-2 md:mx-4">
-                          <div className="text-white text-sm md:text-base w-[85%] overflow-hidden text-right">
-                            <div className="whitespace-nowrap md:hidden">..............................................</div>
-                            <div className="whitespace-nowrap hidden md:block">........................................................................................</div>
-                          </div>
-                        </div>
+                        <div className="min-w-[24px] flex-1 border-b border-dashed border-white/80 translate-y-[-4px]" />
 
-                        <div className="[font-family:'Didact_Gothic',Helvetica] font-normal text-white text-sm md:text-[15px] tracking-[0] leading-[22px] text-right">
+                        <div className="shrink-0 [font-family:'Didact_Gothic',Helvetica] font-normal text-white text-sm md:text-[15px] tracking-[0] leading-[18px] md:leading-[22px] text-right">
                           <span className="mr-1">{item.price.replace(/\d+/g, "")}</span>
                           <CountUp to={parseInt(item.price.replace(/\D/g, ""), 10)} durationMs={1200} />
                         </div>
