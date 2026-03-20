@@ -1,9 +1,10 @@
 import React from "react";
 import { Separator } from "../../../../components/ui/separator";
 import { PhoneCall, Mail, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
-import InView from "../../../../components/InView";
 
 export const FooterSection = (): JSX.Element => {
+  const footerCredit = "© 2026. Developed by 4th Frame";
+
   const contactInfo = [
     { icon: <PhoneCall className="w-6 h-6 text-[#ff9999]" />, text: "+27 81 764 8370" },
     { icon: <Mail className="w-6 h-6 text-[#ff9999]" />, text: "admin@beatbyjess.co.za" },
@@ -44,8 +45,9 @@ export const FooterSection = (): JSX.Element => {
             }
           }
 
-          .footer-credit-bounce {
-            animation: footerCreditBounce 1.8s ease-in-out 200ms 2;
+          .footer-credit-letter {
+            display: inline-block;
+            animation: footerCreditBounce 900ms ease-in-out both;
           }
         `}
       </style>
@@ -142,15 +144,29 @@ export const FooterSection = (): JSX.Element => {
 
       <Separator className="bg-white h-px w-full" />
 
-      <div className="w-full bg-[#1a0f0f] py-3 md:py-[13px]">
-        <InView className="text-center" distancePx={10}>
-          <div className="footer-credit-bounce [font-family:'Didact_Gothic',Helvetica] font-normal text-sm md:text-[15px] tracking-[0] leading-[22px] md:leading-[26px]">
-            <span className="text-white">© </span>
-            <span className="text-[#bbbbbb] text-xs">
-              2026. Developed by 4th Frame
-            </span>
+      <div
+        className="w-full bg-[#1a0f0f] pt-3 md:pt-[13px]"
+        style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+      >
+        <div className="text-center">
+          <div
+            className="[font-family:'Didact_Gothic',Helvetica] font-normal text-sm md:text-[15px] tracking-[0] leading-[22px] md:leading-[26px]"
+            aria-label={footerCredit}
+          >
+            {Array.from(footerCredit).map((character, index) => (
+              <span
+                key={`${character}-${index}`}
+                aria-hidden="true"
+                className={`footer-credit-letter ${
+                  character === "©" ? "text-white" : "text-[#bbbbbb] text-xs"
+                }`}
+                style={{ animationDelay: `${index * 70}ms`, animationIterationCount: 3 }}
+              >
+                {character === " " ? "\u00A0" : character}
+              </span>
+            ))}
           </div>
-        </InView>
+        </div>
       </div>
     </div>
   );
