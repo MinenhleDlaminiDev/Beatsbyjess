@@ -118,31 +118,22 @@ export const ContactUsSection = (): JSX.Element => {
   };
 
   return (
-    <section className="w-full bg-[#f0f0f0] py-12 md:py-16 lg:py-[90px] relative">
+    <section id="book-appointment" className="w-full bg-[#f0f0f0] py-12 md:py-16 lg:py-[90px] relative">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-[215px]">
           <div className="space-y-6 md:space-y-8 text-center lg:text-left order-1 lg:order-1">
-            <header className="space-y-3 md:space-y-4">
+            <header className="flex flex-col gap-3 md:gap-4">
               <div className="inline-flex items-center justify-center lg:justify-start gap-2.5">
                 <div className="[font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-sm md:text-[15px] tracking-[5.00px] leading-[22px] whitespace-nowrap">
-                  LOCATION
+                  CONTACT US
                 </div>
               </div>
-
-              <img
-                className="w-[60px] md:w-[75px] lg:w-[85px] h-px object-cover mx-auto lg:mx-0"
-                alt="Line"
-                src="/line-4.svg"
-              />
-            </header>
-
-            <div className="space-y-3 md:space-y-4">
-              <div className="inline-flex items-center justify-center lg:justify-start gap-2.5 px-0 py-2.5">
-                <h2 className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-[22px] whitespace-nowrap">
+              <div className="inline-flex items-center justify-center lg:justify-start gap-2.5">
+                <h2 className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-none whitespace-nowrap">
                   BOOK APPOINTMENT
                 </h2>
               </div>
-            </div>
+            </header>
 
             <div className="space-y-4 md:space-y-6">
               <p className="[font-family:'Didact_Gothic',Helvetica] font-normal text-black text-sm md:text-base lg:text-[17px] tracking-[0] leading-[22px] md:leading-[26px]">

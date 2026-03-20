@@ -22,23 +22,15 @@ export const MakeupServicesSection = (): JSX.Element => {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
-          <div className="mb-4">
+          <div className="flex flex-col gap-3 md:gap-4">
             <div className="[font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-sm md:text-[15px] tracking-[5.00px] leading-[22px]">
               What I Do
             </div>
-          </div>
 
-          <div className="mb-6">
-            <h2 className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-[22px]">
+            <h2 className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-none">
               MAKEUP SERVICES
             </h2>
           </div>
-
-          <img
-            className="w-[60px] md:w-[75px] lg:w-[85px] h-px object-cover mx-auto"
-            alt="Line"
-            src="/line-4.svg"
-          />
         </div>
 
         {/* Services Grid */}

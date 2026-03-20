@@ -69,18 +69,15 @@ export const PortfolioGallerySection = (): JSX.Element => {
       <div className="relative">
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <div className="mb-4">
+            <div className="flex flex-col gap-3 md:gap-4">
               <div className="[font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-sm md:text-[15px] tracking-[5.00px] leading-[22px]">
                 GALLERY
               </div>
-            </div>
 
-            <div className="mb-6 md:mb-8">
-              <div className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-[22px]">
+              <div className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-none">
                 PORTFOLIO
               </div>
             </div>
-
           </div>
 
           <div className="flex items-center justify-center gap-2 md:gap-3 mb-8">

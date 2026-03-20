@@ -19,20 +19,14 @@ export const AboutMeSection = (): JSX.Element => {
           </div>
 
           <div className="w-full space-y-4 md:space-y-6 order-2 lg:order-2 text-center lg:text-left">
-            <div className="space-y-3 md:space-y-4">
+            <div className="flex flex-col gap-3 md:gap-4">
               <div className="[font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-sm md:text-[15px] tracking-[5.00px] leading-[22px]">
                 About Me
               </div>
 
-              <div className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-[22px]">
+              <div className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-none">
                 JESS RAVUKU
               </div>
-
-              <img
-                className="w-[60px] md:w-[75px] lg:w-[85px] h-px object-cover mx-auto lg:mx-0"
-                alt="Decorative line"
-                src="/line-4.svg"
-              />
             </div>
 
             <div className="space-y-4 md:space-y-6 [font-family:'Didact_Gothic',Helvetica] font-normal text-black text-sm md:text-[15px] tracking-[0] leading-[22px] md:leading-[26px]">

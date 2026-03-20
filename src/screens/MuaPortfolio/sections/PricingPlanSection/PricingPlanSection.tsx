@@ -14,27 +14,19 @@ export const PricingPlanSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="w-full relative">
+    <section id="pricing" className="w-full relative">
       <div className="min-h-[500px] md:min-h-[600px] lg:min-h-[720px] bg-[#f0f0f0] py-12 md:py-16 lg:py-[90px] px-4 md:px-6 lg:px-[115px]">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-[268px] mb-8 md:mb-12 lg:mb-[90px] mx-auto text-center">
-            <div className="flex items-center justify-center mb-4 md:mb-6 lg:mb-[24px]">
+            <div className="flex flex-col items-center gap-3 md:gap-4">
               <div className="[font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-sm md:text-[15px] tracking-[5.00px] leading-[22px]">
                 PRICES
               </div>
-            </div>
 
-            <div className="flex items-center justify-center py-2.5 mb-4 md:mb-6 lg:mb-[19px]">
-              <div className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-[22px] whitespace-nowrap">
+              <div className="[font-family:'Oswald',Helvetica] font-normal text-[#1a0f0f] text-2xl md:text-3xl lg:text-[45px] tracking-[3.00px] leading-none whitespace-nowrap">
                 PRICING PLAN
               </div>
             </div>
-
-            <img
-              className="w-[60px] md:w-[75px] lg:w-[85px] h-px object-cover mx-auto"
-              alt="Line"
-              src="/line-4.svg"
-            />
           </div>
 
           <div className="flex justify-center">

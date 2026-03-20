@@ -13,6 +13,43 @@ const navigationItems = [
 ];
 
 export const HeroBannerSection = (): JSX.Element => {
+  const easeInOutCubic = (progress: number) =>
+    progress < 0.5
+      ? 4 * progress * progress * progress
+      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+  const scrollToSection = (sectionId: string) => {
+    const target = document.getElementById(sectionId);
+
+    if (!target) return;
+
+    const startY = window.scrollY;
+    const targetY = target.getBoundingClientRect().top + window.scrollY;
+    const distance = targetY - startY;
+    const duration = 900;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      window.scrollTo(0, startY + distance * easedProgress);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(animateScroll);
+      }
+    };
+
+    window.requestAnimationFrame(animateScroll);
+  };
+
+  const triggerHaptics = () => {
+    if ("vibrate" in navigator) {
+      navigator.vibrate(12);
+    }
+  };
+
   return (
     <>
       <style>
@@ -93,12 +130,6 @@ export const HeroBannerSection = (): JSX.Element => {
         </header>
 
         <main className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:absolute md:top-[180px] md:left-8 md:transform-none md:w-[calc(100%-4rem)] lg:top-[214px] lg:left-[118px] lg:w-[493px] text-center md:text-left">
-          <img
-            className="w-[60px] md:w-[75px] lg:w-[85px] h-px mb-4 md:mb-6 object-cover mx-auto md:mx-0"
-            alt="Decorative line"
-            src="/line-4.svg"
-          />
-
           <div className="mb-4 md:mb-6">
             <div
               className="opacity-0 [font-family:'Oswald',Helvetica] font-normal text-[#ff9999] text-xs md:text-sm lg:text-[15px] tracking-[6.60px] leading-[22px]"
@@ -117,16 +148,30 @@ export const HeroBannerSection = (): JSX.Element => {
             </h1>
           </div>
 
-          <Button
-            className="h-auto bg-[#ff9999] hover:bg-[#ff8080] px-6 md:px-8 py-2 md:py-3 transition-[box-shadow,transform] duration-300"
-            style={{}}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.animation = 'salmonGlowPulse 1.2s ease-in-out infinite'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.animation = ''; }}
-          >
-            <span className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#fff5f5] text-sm md:text-[15px] tracking-[0] leading-[22px]">
-              About Me
-            </span>
-          </Button>
+          <div className="flex flex-row gap-3 justify-center md:justify-start">
+            <Button
+              className="h-auto bg-[#ff9999] hover:bg-[#ff8080] px-6 md:px-8 py-2 md:py-3 transition-[box-shadow,transform] duration-300"
+              style={{ animation: "salmonGlowPulse 1.8s ease-in-out infinite" }}
+              onClick={() => {
+                triggerHaptics();
+                scrollToSection("book-appointment");
+              }}
+            >
+              <span className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#fff5f5] text-sm md:text-[15px] tracking-[0] leading-[22px]">
+                Book Now
+              </span>
+            </Button>
+
+            <Button
+              variant="outline"
+              className="h-auto border-[#fff5f5] bg-transparent hover:bg-[#fff5f5]/10 px-6 md:px-8 py-2 md:py-3 transition-colors duration-300"
+              onClick={() => scrollToSection("pricing")}
+            >
+              <span className="[font-family:'Didact_Gothic',Helvetica] font-normal text-[#fff5f5] text-sm md:text-[15px] tracking-[0] leading-[22px]">
+                Pricing
+              </span>
+            </Button>
+          </div>
         </main>
 
         <div className="absolute bottom-8 md:bottom-12 lg:bottom-[64px] left-1/2 transform -translate-x-1/2">
