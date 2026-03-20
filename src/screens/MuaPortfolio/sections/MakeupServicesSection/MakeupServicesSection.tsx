@@ -41,7 +41,7 @@ export const MakeupServicesSection = (): JSX.Element => {
                 <CardContent className="p-0">
                   <div className="relative transition-transform duration-300 ease-linear group-hover:-translate-y-1">
                     <img
-                      className="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover"
+                      className="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover object-center"
                       alt={card.title}
                       src={card.image}
                     />

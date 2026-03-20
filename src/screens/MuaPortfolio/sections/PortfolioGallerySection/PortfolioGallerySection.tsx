@@ -1,67 +1,20 @@
 import React, { useMemo, useState } from "react";
-import Gallery1 from "../../../../assets/Gallery1.jpeg"
-import Gallery2 from "../../../../assets/Gallery2.jpeg"
-import Gallery3 from "../../../../assets/Gallery3.jpeg"
-import Gallery4 from "../../../../assets/Gallery4.jpeg"
-import Gallery5 from "../../../../assets/Gallery5.jpeg"
-import Gallery6 from "../../../../assets/Gallery6.jpeg"
-import Gallery7 from "../../../../assets/Gallery7.jpeg"
-import Gallery8 from "../../../../assets/Gallery8.jpg"
-import Gallery9 from "../../../../assets/Gallery9.jpg"
-import Gallery10 from "../../../../assets/Gallery10.jpg"
-import Gallery11 from "../../../../assets/Gallery11.jpg"
-import Gallery12 from "../../../../assets/Gallery12.jpg"
-import Gallery13 from "../../../../assets/Gallery13.jpg"
-import Gallery14 from "../../../../assets/Gallery14.jpg"
-import Gallery15 from "../../../../assets/Gallery15.jpg"
-import Gallery16 from "../../../../assets/Gallery16.jpg"
-import Gallery17 from "../../../../assets/Gallery17.jpg"
-import Gallery18 from "../../../../assets/Gallery18.jpg"
-import Gallery19 from "../../../../assets/Gallery19.jpg"
-import Gallery20 from "../../../../assets/Gallery20.jpg"
-import Gallery21 from "../../../../assets/Gallery21.jpg"
-import Gallery22 from "../../../../assets/Gallery22.jpg"
-import Gallery23 from "../../../../assets/Gallery23.jpg"
+import { Link } from "react-router-dom";
 import InView from "../../../../components/InView";
 import Lightbox from "../../../../components/Lightbox";
+import {
+  filterGalleryImages,
+  galleryCategories,
+  galleryImages,
+} from "../../../../data/galleryImages";
 
 export const PortfolioGallerySection = (): JSX.Element => {
   const [active, setActive] = useState<string | null>(null);
-  const [filter, setFilter] = useState<string>("All");
-  const galleryImages = [
-    Gallery1,
-    Gallery2, 
-    Gallery3,
-    Gallery4,
-    Gallery5,
-    Gallery6,
-    Gallery7,
-    Gallery8,
-    Gallery9,
-    Gallery10,
-    Gallery11,
-    Gallery12,
-    Gallery13,
-    Gallery14,
-    Gallery15,
-    Gallery16,
-    Gallery17,
-    Gallery18,
-    Gallery19,
-    Gallery20,
-    Gallery21,
-    Gallery22,
-    Gallery23
-  ];
-
-  const categories = useMemo(() => (["All", "Bridal", "Editorial", "Casual"]), []);
+  const [filter, setFilter] =
+    useState<(typeof galleryCategories)[number]>("All");
   const filtered = useMemo(() => {
-    if (filter === "All") return galleryImages;
-    return galleryImages.filter((_, i) =>
-      (filter === "Bridal" && i % 3 === 0) ||
-      (filter === "Editorial" && i % 3 === 1) ||
-      (filter === "Casual" && i % 3 === 2)
-    );
+    const visibleImages = galleryImages.slice(0, 8);
+    return filterGalleryImages(visibleImages, filter);
   }, [galleryImages, filter]);
 
   return (
@@ -80,18 +33,6 @@ export const PortfolioGallerySection = (): JSX.Element => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-2 md:gap-3 mb-8">
-            {categories.map((c) => (
-              <button
-                key={c}
-                onClick={() => setFilter(c)}
-                className={`px-3 py-1 rounded-full border transition-all duration-300 ${filter === c ? 'bg-[#ff9999] text-white border-[#ff9999]' : 'border-[#1a0f0f] text-[#1a0f0f] hover:bg-[#ffe1da]'}`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {filtered.map((image, index) => (
               <InView key={image} delayMs={index * 80}>
@@ -103,16 +44,29 @@ export const PortfolioGallerySection = (): JSX.Element => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     alt={`Gallery image`}
                     src={image}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-[rgba(255,160,122,0)] group-hover:bg-[rgba(255,160,122,0.18)] transition-colors duration-300" />
                 </button>
               </InView>
             ))}
           </div>
+
+          <div className="flex justify-center mt-8 md:mt-10">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center justify-center rounded-md bg-[#ff9999] px-6 md:px-8 py-2 md:py-3 [font-family:'Didact_Gothic',Helvetica] text-[#fff5f5] text-sm md:text-[15px] leading-[22px] transition-[box-shadow,transform,background-color] duration-300 hover:bg-[#ff8080]"
+            >
+              View Full Gallery
+            </Link>
+          </div>
         </div>
       </div>
       <Lightbox
         src={active}
+        currentIndex={active ? filtered.indexOf(active) : undefined}
+        totalCount={filtered.length}
         onClose={() => setActive(null)}
         onPrev={() => {
           if (!active) return;

@@ -8,9 +8,21 @@ type LightboxProps = {
   onNext?: () => void;
   hasPrev?: boolean;
   hasNext?: boolean;
+  currentIndex?: number;
+  totalCount?: number;
 };
 
-export const Lightbox: React.FC<LightboxProps> = ({ src, alt = "Preview", onClose, onPrev, onNext, hasPrev = true, hasNext = true }) => {
+export const Lightbox: React.FC<LightboxProps> = ({
+  src,
+  alt = "Preview",
+  onClose,
+  onPrev,
+  onNext,
+  hasPrev = true,
+  hasNext = true,
+  currentIndex,
+  totalCount,
+}) => {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -41,6 +53,12 @@ export const Lightbox: React.FC<LightboxProps> = ({ src, alt = "Preview", onClos
         style={{ animation: "lbSlideUp 300ms cubic-bezier(0.25,0.46,0.45,0.94) forwards" }}
       >
         <img src={src} alt={alt} className="block max-w-full max-h-[85vh] h-auto w-auto m-auto object-contain" />
+
+        {typeof currentIndex === "number" && typeof totalCount === "number" ? (
+          <div className="absolute top-2 left-2 md:top-3 md:left-3 text-white/90 bg-black/30 rounded-full px-3 py-1 text-xs md:text-sm">
+            {currentIndex + 1} of {totalCount}
+          </div>
+        ) : null}
 
         {/* Arrows */}
         {hasPrev && (
