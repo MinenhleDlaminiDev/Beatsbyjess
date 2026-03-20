@@ -1,5 +1,6 @@
 import React from "react";
 import { AboutMeSection } from "./sections/AboutMeSection/AboutMeSection";
+import { BookingPolicySection } from "./sections/BookingPolicySection/BookingPolicySection";
 import { ContactUsSection } from "./sections/ContactUsSection/ContactUsSection";
 import { FooterSection } from "./sections/FooterSection/FooterSection";
 import { HeroBannerSection } from "./sections/HeroBannerSection/HeroBannerSection";
@@ -18,6 +19,7 @@ export const MuaPortfolio = (): JSX.Element => {
         <PricingPlanSection />
         <PortfolioGallerySection />
         <ContactUsSection />
+        <BookingPolicySection />
         <FooterSection />
       </div>
     </div>
