@@ -33,7 +33,7 @@ export const PricingPlanSection = (): JSX.Element => {
             <InView className="w-full max-w-[827px]">
             <Card className="w-full max-w-[827px] border-dashed border-black overflow-hidden bg-transparent">
               <CardContent className="p-0 relative w-full bg-[url(/src/assets/GeneralPriceBackground.jpg)] bg-cover bg-[center_36%]">
-                <div className="absolute inset-0 bg-[#1a0f0f99]" />
+                <div className="absolute inset-0 bg-[#1a0f0f5c]" />
 
                 <div className="relative z-10 p-6 md:p-8 lg:p-[59px]">
                   <h3 className="[font-family:'Oswald',Helvetica] font-normal text-white text-lg md:text-xl lg:text-2xl tracking-[2.00px] leading-[22px] mb-6 md:mb-10 lg:mb-12 text-center md:text-left">

@@ -69,7 +69,7 @@ export const FooterSection = (): JSX.Element => {
 
             <div className="flex justify-center lg:justify-start gap-4">
               <a
-                href="https://www.instagram.com/jess.ravukuu/"
+                href="https://www.instagram.com/beatby_jessravuku/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
