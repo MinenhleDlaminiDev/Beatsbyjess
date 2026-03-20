@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../../../../components/ui/button";
 import HeroBanner from "../../../../assets/Hero.jpg";
-import Gallery14 from "../../../../assets/Gallery14.jpg";
+import CarouselPortrait from "../../../../assets/9f378a3d-b0f0-491b-b5ad-cb241f397750.jpg";
 import Gallery19 from "../../../../assets/Gallery19.jpg";
 import Gallery23 from "../../../../assets/Gallery23.jpg";
 
@@ -14,7 +14,7 @@ const navigationItems = [
   "Contact",
 ];
 
-const heroSlides = [HeroBanner, Gallery14, Gallery19, Gallery23];
+const heroSlides = [HeroBanner, CarouselPortrait, Gallery19, Gallery23];
 
 export const HeroBannerSection = (): JSX.Element => {
   const [activeSlide, setActiveSlide] = useState(0);
