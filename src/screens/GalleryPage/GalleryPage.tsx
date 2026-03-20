@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import InView from "../../components/InView";
 import Lightbox from "../../components/Lightbox";
@@ -12,6 +12,10 @@ export const GalleryPage = (): JSX.Element => {
   const [active, setActive] = useState<string | null>(null);
   const [filter, setFilter] =
     useState<(typeof galleryCategories)[number]>("All");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
 
   const filtered = useMemo(
     () => filterGalleryImages(galleryImages, filter),
