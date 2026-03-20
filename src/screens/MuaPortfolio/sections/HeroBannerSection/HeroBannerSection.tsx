@@ -1,7 +1,9 @@
-import { ChevronDownIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../../../../components/ui/button";
-import HeroBanner from "../../../../assets/Hero.jpg"
+import HeroBanner from "../../../../assets/Hero.jpg";
+import Gallery14 from "../../../../assets/Gallery14.jpg";
+import Gallery19 from "../../../../assets/Gallery19.jpg";
+import Gallery23 from "../../../../assets/Gallery23.jpg";
 
 const navigationItems = [
   "Home",
@@ -12,7 +14,11 @@ const navigationItems = [
   "Contact",
 ];
 
+const heroSlides = [HeroBanner, Gallery14, Gallery19, Gallery23];
+
 export const HeroBannerSection = (): JSX.Element => {
+  const [activeSlide, setActiveSlide] = useState(0);
+
   const easeInOutCubic = (progress: number) =>
     progress < 0.5
       ? 4 * progress * progress * progress
@@ -50,6 +56,14 @@ export const HeroBannerSection = (): JSX.Element => {
     }
   };
 
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <>
       <style>
@@ -85,15 +99,27 @@ export const HeroBannerSection = (): JSX.Element => {
             50% { box-shadow: 0 8px 24px rgba(255,160,122,0.45), 0 2px 8px rgba(255,160,122,0.35); }
             100% { box-shadow: 0 0 0 0 rgba(255,160,122,0.0), 0 0 0 rgba(0,0,0,0); }
           }
+
+          @keyframes heroImageZoom {
+            from { transform: scale(1.02); }
+            to { transform: scale(1.09); }
+          }
         `}
       </style>
-      <section className="relative w-full h-screen lg:h-[90vh] shadow-[0px_40px_87px_#0000001a,0px_159px_159px_#00000017,0px_357px_214px_#0000000d,0px_634px_254px_#00000003,0px_991px_277px_transparent]">
-      <div className="relative h-full">
-        <img
-          className="absolute w-full h-full top-0 left-0 object-cover"
-          alt="Makeup brushes background"
-          src={HeroBanner}
-        />
+      <section className="relative w-full h-screen overflow-hidden shadow-[0px_40px_87px_#0000001a,0px_159px_159px_#00000017,0px_357px_214px_#0000000d,0px_634px_254px_#00000003,0px_991px_277px_transparent]">
+      <div className="relative h-full overflow-hidden">
+        {heroSlides.map((slide, index) => (
+          <img
+            key={slide}
+            className="absolute w-full h-full top-0 left-0 object-cover transition-opacity duration-[1400ms] ease-in-out"
+            style={{
+              opacity: index === activeSlide ? 1 : 0,
+              animation: index === activeSlide ? "heroImageZoom 5s linear forwards" : "none",
+            }}
+            alt="Makeup artistry showcase"
+            src={slide}
+          />
+        ))}
 
         <div className="absolute w-full h-full top-0 left-0 bg-[#1a0f0f82]" />
 
@@ -174,11 +200,19 @@ export const HeroBannerSection = (): JSX.Element => {
           </div>
         </main>
 
-        <div className="absolute bottom-8 md:bottom-12 lg:bottom-[64px] left-1/2 transform -translate-x-1/2">
-          <ChevronDownIcon className="w-8 h-8 md:w-10 md:h-10 text-white synchronized-bounce" />
+        <div className="absolute bottom-8 md:bottom-12 lg:bottom-[64px] left-1/2 flex -translate-x-1/2 items-center gap-2">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Show slide ${index + 1}`}
+              onClick={() => setActiveSlide(index)}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                index === activeSlide ? "w-8 bg-[#ff9999]" : "w-2.5 bg-white/60"
+              }`}
+            />
+          ))}
         </div>
-
-        
       </div>
     </section>
     </>
